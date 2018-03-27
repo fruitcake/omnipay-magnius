@@ -1,0 +1,4 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{"card":[],"customer":"","account":"foo123","organisation":"bar456","id":"123abc","amount":1234,"dynamic_descriptor":"orderdesc01","merchant_reference":"5ab365dfdb1dd","customer_ip":"127.0.0.1","country_code":"","city":"","user_agent":"php\/omnipay","platform":"","browser":"php","browser_version":"omnipay","details":{"redirect_url":"http:\/\/example.com\/","issuer":"ABNANL2A","approval_url":"https:\/\/sandbox.magnius.com\/v1\/transaction\/123abc\/ideal\/ideal\/authorize"},"payment_product":"ideal","payment_product_type":"ideal","payment_product_issuer":"ingbnl2a","processor":"ideal","fraud_prediction":"","status":"INITIATED","last_status_update":"2018-03-22T09:14:25+0100","latitude":"","longitude":"","tagged":false,"tags":[],"blocked":false,"block_details":[],"webhook_transaction_update":"","capayable_details":[],"created_at":"2018-03-22T09:14:24+0100"}

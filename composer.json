@@ -1,0 +1,47 @@
+{
+    "name": "fruitcake/omnipay-magnius",
+    "description": "Magnius Gateway",
+    "keywords": [
+        "omnipay",
+        "magnius"
+    ],
+    "homepage": "https://github.com/fruitcake/omnipay-magnius",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Barry vd. Heuvel",
+            "email": "barry@fruitcake.nl",
+            "homepage": "https://fruitcake.nl"
+        }
+    ],
+    "require": {
+        "omnipay/common": "3.x@dev"
+    },
+    "require-dev": {
+        "omnipay/tests": "~3.0",
+        "squizlabs/php_codesniffer": "^3",
+        "phpro/grumphp": "^0.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Magnius\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omnipay\\Magnius\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 src/",
+        "fix-style": "phpcbf -p --standard=PSR2 src/"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
