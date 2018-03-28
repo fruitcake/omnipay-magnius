@@ -32,6 +32,7 @@ class PurchaseRequestTest extends TestCase
                 'clientIp' => '127.0.0.1',
                 'description' => 'orderdesc01',
                 'paymentMethod' => 'ideal',
+                'issuer' => 'ABNANL2A',
             )
         );
     }

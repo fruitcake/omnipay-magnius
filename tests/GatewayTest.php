@@ -42,6 +42,7 @@ class GatewayTest extends GatewayTestCase
             'clientIp' => '127.0.0.1',
             'description' => 'orderdesc01',
             'paymentMethod' => 'ideal',
+            'issuer' => 'ABNANL2A',
         ])->send();
 
         $this->assertFalse($response->isSuccessful());

@@ -12,9 +12,13 @@ class PurchaseRequest extends AbstractRequest
     {
         $this->validate('amount', 'paymentMethod');
 
+        if ($this->getPaymentMethod() === 'ideal') {
+            $this->validate('issuer');
+        }
+
         $data = $this->getBaseData();
 
-        $data['details']['issuer'] = 'ABNANL2A';
+        $data['details']['issuer'] = $this->getIssuer();
         $data['amount'] = $this->getAmountInteger();
         $data['payment_product'] = $this->getPaymentMethod();
 
