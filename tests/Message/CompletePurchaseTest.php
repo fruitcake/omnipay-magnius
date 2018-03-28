@@ -9,10 +9,10 @@ use Omnipay\Magnius\Message\PurchaseRequest;
 use Omnipay\Magnius\Message\Response;
 use Omnipay\Tests\TestCase;
 
-class CompletePurchaseRequestTest extends TestCase
+class CompletePurchaseTest extends TestCase
 {
     /**
-     * @var PurchaseRequest
+     * @var CompletePurchaseRequest
      */
     private $request;
 

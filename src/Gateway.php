@@ -4,6 +4,8 @@ namespace Omnipay\Magnius;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Magnius\Message\CompletePurchaseRequest;
+use Omnipay\Magnius\Message\FetchIssuersRequest;
+use Omnipay\Magnius\Message\FetchPaymentMethodsRequest;
 use Omnipay\Magnius\Message\PurchaseRequest;
 
 /**
@@ -61,5 +63,23 @@ class Gateway extends AbstractGateway
     public function completePurchase(array $parameters = array())
     {
         return $this->createRequest(CompletePurchaseRequest::class, $parameters);
+    }
+
+    /**
+     * @param  array $parameters
+     * @return FetchIssuersRequest
+     */
+    public function fetchIssuers(array $parameters = array())
+    {
+        return $this->createRequest(FetchIssuersRequest::class, $parameters);
+    }
+
+    /**
+     * @param  array $parameters
+     * @return FetchPaymentMethodsRequest
+     */
+    public function fetchPaymentMethods(array $parameters = array())
+    {
+        return $this->createRequest(FetchPaymentMethodsRequest::class, $parameters);
     }
 }

@@ -8,7 +8,7 @@ use Omnipay\Magnius\Message\PurchaseResponse;
 use Omnipay\Magnius\Message\Response;
 use Omnipay\Tests\TestCase;
 
-class PurchaseRequestTest extends TestCase
+class PurchaseTest extends TestCase
 {
     /**
      * @var PurchaseRequest
