@@ -56,7 +56,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
         return [
             'account' => $this->getAccountId(),
-            'customer_ip' => $this->getClientIp(),
+            'customer_ip' => $this->getClientIp() ?: $this->httpRequest->getClientIp(),
             'merchant_reference' => $this->getTransactionId(),
             'dynamic_descriptor' => $this->getDescription(),
             'user_agent' => 'php/omnipay',

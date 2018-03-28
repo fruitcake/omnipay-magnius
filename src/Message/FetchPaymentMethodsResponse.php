@@ -9,12 +9,12 @@ use Omnipay\Common\PaymentMethod;
 class FetchPaymentMethodsResponse extends AbstractResponse implements FetchPaymentMethodsResponseInterface
 {
     protected $paymentMethods = [
-        'capayable' => 'Capayable',
+//        'capayable' => 'Capayable',
         'ideal' => 'iDEAL',
-        'inthreeinstallments' => 'In Three Installments',
+//        'inthreeinstallments' => 'In Three Installments',
         'paypal' => 'PayPal',
-        'card' => 'Card',
-        'sepa' => 'Sepa',
+//        'card' => 'Card',
+//        'sepa' => 'Sepa',
     ];
 
     /**

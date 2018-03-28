@@ -73,4 +73,16 @@ class Response extends AbstractResponse
             return $this->data['code'];
         }
     }
+
+    /**
+     * Details
+     *
+     * @return null|array The details from an error
+     */
+    public function getDetails()
+    {
+        if (isset($this->data['details'])) {
+            return $this->data['details'];
+        }
+    }
 }

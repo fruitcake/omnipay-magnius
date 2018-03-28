@@ -30,6 +30,57 @@ The following gateways are provided by this package:
 
  * Magnius
 
+The following paymentMethods are implemented:
+
+ * ideal
+ * paypal
+ 
+## Example
+
+```php
+ $gateway = \Omnipay\Omnipay::create('Magnius');
+    $gateway->initialize(array(
+        'accountId' => '',
+        'apiKey' => '',
+        'testMode' => true,
+    ));
+
+    // Start the purchase
+    if(!isset($_GET['transaction_id'])){
+        $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $response = $gateway->purchase(array(
+            'amount' => "6.84",
+            'description' => "Testorder #1234",
+            'issuer' => 'ABNANL2A',                  // Get the id from the issuers list
+            'paymentMethod' => 'ideal',             // For 'ideal', the Issuer is required
+            'transactionId' => 1234,
+            'returnUrl' => $url,
+            'notifyUrl' => $url,
+        ))->send();
+
+        if ($response->isRedirect()) {
+            // redirect to offsite payment gateway
+            $response->redirect();
+        } elseif ($response->isPending()) {
+            // Process started (for example, 'overboeking')
+            return "Pending, Reference: ". $response->getTransactionReference();
+        } else {
+            // payment failed: display message to customer
+            return "Error " .$response->getCode() . ': ' . $response->getMessage() . 
+            ' Details: '. print_r($response->getDetails(), true);
+        }
+    }else{
+        // Check the status
+        $response = $gateway->completePurchase()->send();
+        if($response->isSuccessful()){
+            $reference = $response->getTransactionReference();  // TODO; Check the reference/id with your database
+            return "Transaction '" . $response->getTransactionId() . "' succeeded!";
+        }else{
+            return "Error " .$response->getCode() . ': ' . $response->getMessage();
+        }
+    }
+```
+
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay) repository.
 
 ## Support

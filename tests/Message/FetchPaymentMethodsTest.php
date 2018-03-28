@@ -44,7 +44,7 @@ class FetchPaymentMethodsTest extends TestCase
         $methods = $response->getPaymentMethods();
 
         $this->assertTrue($response->isSuccessful());
-        $this->assertCount(6, $methods);
+        $this->assertCount(2, $methods);
         $this->assertInstanceOf(PaymentMethod::class, array_values($methods)[0]);
     }
 }
