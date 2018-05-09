@@ -1,0 +1,27 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "qux123",
+  "organisation": {},
+  "title": "string",
+  "initials": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "gender": "string",
+  "date_of_birth": "string",
+  "email_address": "string",
+  "phone_number": "string",
+  "fax_number": "string",
+  "street_address": "string",
+  "house_number": "string",
+  "house_number_suffix": "string",
+  "postal_code": "string",
+  "city": "string",
+  "region": "string",
+  "country_code": "string",
+  "social_security_number": "string",
+  "mandates": {
+    "_type": "string"
+  }
+}
