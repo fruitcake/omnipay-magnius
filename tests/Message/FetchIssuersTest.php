@@ -33,6 +33,7 @@ class FetchIssuersTest extends TestCase
 
     public function testSendSuccess()
     {
+        $this->setMockHttpResponse('FetchIssuersSuccess.txt');
         $response = $this->request->send();
 
         $this->assertInstanceOf(FetchIssuersResponse::class, $response);
@@ -41,7 +42,13 @@ class FetchIssuersTest extends TestCase
         $issuers = $response->getIssuers();
 
         $this->assertTrue($response->isSuccessful());
-        $this->assertCount(10, $issuers);
-        $this->assertInstanceOf(Issuer::class, array_values($issuers)[0]);
+        $this->assertCount(11, $issuers);
+
+        /** @var Issuer $issuer */
+        $issuer = array_values($issuers)[0];
+        $this->assertInstanceOf(Issuer::class, $issuer);
+        $this->assertEquals('ABNANL2A', $issuer->getId());
+        $this->assertEquals('ABN AMRO', $issuer->getName());
+        $this->assertEquals('ideal', $issuer->getPaymentMethod());
     }
 }

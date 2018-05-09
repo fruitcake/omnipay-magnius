@@ -14,13 +14,13 @@ class FetchIssuersRequest extends AbstractRequest
         $this->validate('apiKey');
     }
 
-    public function sendData($data)
-    {
-        return $this->response = new FetchIssuersResponse($this, null);
-    }
-
     protected function getRequestUrl()
     {
-        return null;
+        return 'transaction/ideal/issuers';
+    }
+
+    protected function createResponse($data)
+    {
+        return $this->response = new FetchIssuersResponse($this, $data);
     }
 }

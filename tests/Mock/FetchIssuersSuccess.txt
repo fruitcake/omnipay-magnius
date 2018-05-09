@@ -1,0 +1,49 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[
+  {
+    "name": "ABN AMRO",
+    "issuer": "ABNANL2A"
+  },
+  {
+    "name": "ASN Bank",
+    "issuer": "ASNBNL21"
+  },
+  {
+    "name": "Bunq",
+    "issuer": "BUNQNL2A"
+  },
+  {
+    "name": "ING",
+    "issuer": "INGBNL2A"
+  },
+  {
+    "name": "Knab",
+    "issuer": "KNABNL2H"
+  },
+  {
+    "name": "Moneyou",
+    "issuer": "MOYONL21"
+  },
+  {
+    "name": "Rabobank",
+    "issuer": "RABONL2U"
+  },
+  {
+    "name": "RegioBank",
+    "issuer": "RBRBNL21"
+  },
+  {
+    "name": "SNS Bank",
+    "issuer": "SNSBNL2A"
+  },
+  {
+    "name": "Triodos Bank",
+    "issuer": "TRIONL2U"
+  },
+  {
+    "name": "van Lanschot",
+    "issuer": "FVLBNL22"
+  }
+]
