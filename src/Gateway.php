@@ -24,6 +24,7 @@ class Gateway extends AbstractGateway
     {
         return array(
             'accountId' => null,
+            'organisationId' => null,
             'apiKey' => null,
             'testMode' => false,
         );
@@ -37,6 +38,16 @@ class Gateway extends AbstractGateway
     public function setAccountId($value)
     {
         return $this->setParameter('accountId', $value);
+    }
+
+    public function getOrganisationId()
+    {
+        return $this->getParameter('organisationId');
+    }
+
+    public function setOrganisationId($value)
+    {
+        return $this->setParameter('organisationId', $value);
     }
 
     public function getApiKey()

@@ -23,6 +23,16 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->setParameter('accountId', $value);
     }
 
+    public function getOrganisationId()
+    {
+        return $this->getParameter('organisationId');
+    }
+
+    public function setOrganisationId($value)
+    {
+        return $this->setParameter('organisationId', $value);
+    }
+
     public function getApiKey()
     {
         return $this->getParameter('apiKey');
