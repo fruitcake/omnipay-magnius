@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "omnipay/common": "^3@beta"
+        "omnipay/common": "^3@rc"
     },
     "require-dev": {
         "omnipay/tests": "^3",
