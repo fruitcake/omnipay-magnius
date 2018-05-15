@@ -21,7 +21,7 @@ PSRs you support to avoid any confusion with users and contributors.
 Via Composer
 
 ``` bash
-$ composer require fruitcake/omnipay-magnius
+$ composer require league/omnipay fruitcake/omnipay-magnius
 ```
 
 ## Usage
