@@ -12,15 +12,22 @@ class PurchaseRequest extends AbstractRequest
     {
         $this->validate('amount', 'paymentMethod');
 
-        if ($this->getPaymentMethod() === 'ideal') {
-            $this->validate('issuer');
-        }
+        $paymentMethod = strtolower($this->getPaymentMethod());
 
         $data = $this->getBaseData();
 
-        $data['details']['issuer'] = $this->getIssuer();
+        if ($paymentMethod === 'ideal') {
+            $this->validate('issuer');
+            $data['details']['issuer'] = $this->getIssuer();
+        }
+
+        if ($paymentMethod === 'sepa') {
+            $this->validate('customerId');
+            $data['customer'] = $this->getCustomerId();
+        }
+
         $data['amount'] = $this->getAmountInteger();
-        $data['payment_product'] = $this->getPaymentMethod();
+        $data['payment_product'] = $paymentMethod;
 
         return $data;
     }

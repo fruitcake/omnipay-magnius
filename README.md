@@ -34,6 +34,28 @@ The following paymentMethods are implemented:
 
  * ideal
  * paypal
+ * sepa (requires Customer)
+ 
+### Customers
+ 
+  You can create a Customer using the `CreateCustomerRequest`. 
+  The Response contains a `customerReference` you can use in your requests. 
+ 
+ ```php
+$response = $gateway->createCustomer([
+    'card' => [
+        'email' => 'barry@fruitcake.nl',
+        'country' => 'NL',
+        'city' => 'Eindhoven',
+        'address1' => 'My Street',
+        'phone' => '123',
+        'company' => 'Fruitcake',
+    ]
+
+])->send();
+
+$customerId = $response->getCustomerId();
+ ```
  
 ## Example
 
@@ -43,6 +65,7 @@ The following paymentMethods are implemented:
         'accountId' => '',
         'apiKey' => '',
         'testMode' => true,
+        'organisationId' => null,
     ));
 
     // Start the purchase
@@ -54,6 +77,7 @@ The following paymentMethods are implemented:
             'issuer' => 'ABNANL2A',                  // Get the id from the issuers list
             'paymentMethod' => 'ideal',             // For 'ideal', the Issuer is required
             'transactionId' => 1234,
+            'customerId' => $customerId,            // If you have a customerId
             'returnUrl' => $url,
             'notifyUrl' => $url,
         ))->send();

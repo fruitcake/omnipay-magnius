@@ -2,16 +2,9 @@
 
 namespace Omnipay\Magnius\Tests;
 
-use Omnipay\Common\CreditCard;
-use Omnipay\Common\Issuer;
-use Omnipay\Common\Message\FetchIssuersResponseInterface;
+use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Magnius\Message\CreateCustomerRequest;
 use Omnipay\Magnius\Message\CreateCustomerResponse;
-use Omnipay\Magnius\Message\FetchIssuersRequest;
-use Omnipay\Magnius\Message\FetchIssuersResponse;
-use Omnipay\Magnius\Message\PurchaseRequest;
-use Omnipay\Magnius\Message\PurchaseResponse;
-use Omnipay\Magnius\Message\Response;
 use Omnipay\Tests\TestCase;
 
 class CreateCustomerRequestTest extends TestCase
@@ -37,6 +30,7 @@ class CreateCustomerRequestTest extends TestCase
                     'address1' => 'My street 1',
                     'phone' => '+311234567',
                     'company' => 'Fruitcake',
+                    'postcode' => '1234AB',
                 ]
             )
         );
@@ -50,6 +44,23 @@ class CreateCustomerRequestTest extends TestCase
         $this->assertInstanceOf(CreateCustomerResponse::class, $response);
 
         $this->assertTrue($response->isSuccessful());
-        $this->assertEquals('qux123', $response->getCustomerReference());
+        $this->assertEquals('qux123', $response->getCustomerId());
+    }
+
+    public function testGetData()
+    {
+        $data = $this->request->getData();
+
+        $this->assertSame('Fruitcake', $data['company_name']);
+        $this->assertSame('barry@fruitcake.nl', $data['email_address']);
+    }
+
+    public function testGetDataIdealWithoutIssuer()
+    {
+        $this->expectException(InvalidRequestException::class);
+        $this->expectExceptionMessage('The postcode parameter is required');
+
+        $this->request->getCard()->setPostcode(null);
+        $data = $this->request->getData();
     }
 }

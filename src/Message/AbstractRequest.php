@@ -43,6 +43,17 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->setParameter('apiKey', $value);
     }
 
+
+    public function getCustomerId()
+    {
+        return $this->getParameter('customerId');
+    }
+
+    public function setCustomerId($value)
+    {
+        return $this->setParameter('customerId', $value);
+    }
+
     public function sendData($data)
     {
         $this->validate('apiKey');

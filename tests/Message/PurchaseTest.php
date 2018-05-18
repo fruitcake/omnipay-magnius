@@ -3,6 +3,7 @@
 namespace Omnipay\Magnius\Tests;
 
 use Omnipay\Common\CreditCard;
+use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Magnius\Message\PurchaseRequest;
 use Omnipay\Magnius\Message\PurchaseResponse;
 use Omnipay\Magnius\Message\Response;
@@ -47,6 +48,26 @@ class PurchaseTest extends TestCase
         $this->assertSame('foo123', $data['account']);
         $this->assertSame(1000, $data['amount']);
         $this->assertSame('ideal', $data['payment_product']);
+    }
+
+    public function testGetDataIdealWithoutIssuer()
+    {
+        $this->expectException(InvalidRequestException::class);
+        $this->expectExceptionMessage('The issuer parameter is required');
+
+        $data = $this->request
+            ->setIssuer(null)
+            ->getData();
+    }
+
+    public function testGetDataSepaWithoutCustomer()
+    {
+        $this->expectException(InvalidRequestException::class);
+        $this->expectExceptionMessage('The customerId parameter is required');
+
+        $data = $this->request
+            ->setPaymentMethod('sepa')
+            ->getData();
     }
 
     public function testSendSuccess()

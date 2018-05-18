@@ -20,6 +20,20 @@ class CreateCustomerRequest extends AbstractRequest
 
         $card = $this->getCard();
 
+        foreach ([
+             'email',
+             'city',
+             'country',
+             'phone',
+             'address1',
+             'postcode'
+         ] as $key) {
+            $getter = 'get'.ucfirst($key);
+            if (! $card->{$getter}()) {
+                throw new InvalidRequestException("The $key parameter is required");
+            }
+        }
+
         $data = [
             'organisation' => $this->getOrganisationId(),
             'city' => $card->getCity(),
@@ -38,21 +52,6 @@ class CreateCustomerRequest extends AbstractRequest
             $data['last_name'] = $card->getLastName();
         } else {
             throw new InvalidRequestException("Either the Company or First+Last Name are required");
-        }
-
-
-        foreach ([
-                    'organisation',
-                     'email_address',
-                     'city',
-                     'country_code',
-                     'phone_number',
-                     'street_address',
-                     'gender'
-                 ] as $key) {
-            if (! $data[$key]) {
-                throw new InvalidRequestException("The $key parameter is required");
-            }
         }
 
         return $data;
