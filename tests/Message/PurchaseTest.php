@@ -49,17 +49,7 @@ class PurchaseTest extends TestCase
         $this->assertSame(1000, $data['amount']);
         $this->assertSame('ideal', $data['payment_product']);
     }
-
-    public function testGetDataIdealWithoutIssuer()
-    {
-        $this->expectException(InvalidRequestException::class);
-        $this->expectExceptionMessage('The issuer parameter is required');
-
-        $data = $this->request
-            ->setIssuer(null)
-            ->getData();
-    }
-
+    
     public function testGetDataSepaWithoutCustomer()
     {
         $this->expectException(InvalidRequestException::class);
