@@ -20,4 +20,11 @@ class CompletePurchaseResponse extends Response
     {
         return isset($this->data['status']) && $this->data['status'] == 'SETTLEMENT_COMPLETED';
     }
+    
+    public function getStatus()
+    {
+        if (isset($this->data['status'])) {
+            return $this->data['status'];
+        }
+    }
 }
