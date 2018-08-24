@@ -9,6 +9,11 @@ namespace Omnipay\Magnius\Message;
  */
 class FetchIssuersRequest extends AbstractRequest
 {
+    protected function getRequestMethod()
+    {
+        return 'GET';
+    }
+    
     public function getData()
     {
         $this->validate('apiKey');
